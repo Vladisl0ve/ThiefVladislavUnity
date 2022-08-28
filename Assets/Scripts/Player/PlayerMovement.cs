@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
+    private Health playerHealth;
     private float walljumpCD; //cooldown
     private float horInput;
 
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        playerHealth = GetComponent<Health>();
     }
 
     private void Update()
@@ -106,6 +108,6 @@ public class PlayerMovement : MonoBehaviour
 
     public bool CanAttack()
     {
-        return true;
+        return !playerHealth.IsDead;
     }
 }
